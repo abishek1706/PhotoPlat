@@ -1,0 +1,656 @@
+
+{%extends 'main/base.html'%}
+{%block content%}
+<!-- ===================== HERO SECTION ===================== -->
+<section class="hero-bg py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-white border border-border rounded-full px-4 py-1.5 mb-8">
+        <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+        <span class="text-xs font-medium text-muted badge uppercase">1,200+ Verified Photographers</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-700 text-primary leading-tight mb-6">
+        Book talented photographers,
+        <span class="text-accent italic"> effortlessly.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg text-muted max-w-xl mx-auto mb-10 leading-relaxed">
+        Discover and book professional photographers for any occasion — weddings, portraits, commercial shoots, and more. Verified, reviewed, and ready to capture your vision.
+      </p>
+
+      <!-- Search Bar -->
+      <div class="bg-white border border-border rounded-2xl shadow-sm p-2 flex flex-col md:flex-row gap-2 max-w-2xl mx-auto">
+        <div class="flex items-center gap-3 flex-1 px-4 py-2">
+          <i class="fa fa-search text-muted text-sm"></i>
+          <input type="text" placeholder="What type of shoot?" class="flex-1 text-sm bg-transparent border-none placeholder-gray-400" />
+        </div>
+        <div class="hidden md:block w-px bg-border self-stretch my-2"></div>
+        <div class="flex items-center gap-3 flex-1 px-4 py-2">
+          <i class="fa fa-map-marker text-muted text-sm"></i>
+          <input type="text" placeholder="City or location" class="flex-1 text-sm bg-transparent border-none placeholder-gray-400" />
+        </div>
+        <div class="hidden md:block w-px bg-border self-stretch my-2"></div>
+        <div class="flex items-center gap-3 flex-1 px-4 py-2">
+          <i class="fa fa-sliders text-muted text-sm"></i>
+          <select class="flex-1 text-sm bg-transparent border-none text-gray-500">
+            <option value="">Price range</option>
+            <option>Budget (under $200)</option>
+            <option>Mid ($200–$600)</option>
+            <option>Premium ($600+)</option>
+          </select>
+        </div>
+        <button class="bg-primary text-white text-sm font-semibold px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors whitespace-nowrap">
+          <i class="fa fa-search mr-2"></i>Find Photographers
+        </button>
+      </div>
+
+      <!-- Trust Stats -->
+      <div class="flex flex-wrap justify-center gap-8 mt-12 text-sm text-muted">
+        <div class="flex items-center gap-2">
+          <i class="fa fa-check-circle text-green-500"></i>
+          <span>Background checked</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa fa-star text-yellow-400"></i>
+          <span>4.9 avg. rating</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa fa-shield text-accent"></i>
+          <span>Secure payments</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa fa-calendar text-accent"></i>
+          <span>Instant booking</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STATS STRIP ===================== -->
+<section class="border-y border-border bg-white py-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="text-3xl font-semibold font-serif text-primary">1,200+</p>
+        <p class="text-sm text-muted mt-1">Verified Photographers</p>
+      </div>
+      <div>
+        <p class="text-3xl font-semibold font-serif text-primary">48K+</p>
+        <p class="text-sm text-muted mt-1">Successful Bookings</p>
+      </div>
+      <div>
+        <p class="text-3xl font-semibold font-serif text-primary">98%</p>
+        <p class="text-sm text-muted mt-1">Client Satisfaction</p>
+      </div>
+      <div>
+        <p class="text-3xl font-semibold font-serif text-primary">120+</p>
+        <p class="text-sm text-muted mt-1">Cities Covered</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OFFERS / CATEGORIES SECTION ===================== -->
+<section id="offers" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-14">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-3 badge">Photography Niches</p>
+      <h2 class="font-serif text-4xl md:text-5xl font-700 text-primary mb-4">Every shoot, covered.</h2>
+      <p class="text-muted max-w-md mx-auto">Explore our wide range of photography categories and find the perfect match for your vision.</p>
+    </div>
+
+    <!-- Category Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+
+      <!-- Wedding & Events -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-[4/3] cursor-pointer">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80')"></div>
+        <div class="absolute bottom-0 left-0 p-5 z-20">
+          <div class="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3">
+            <i class="fa fa-heart text-white text-base"></i>
+          </div>
+          <h3 class="text-white font-semibold text-base leading-tight">Wedding &amp; Events</h3>
+          <p class="text-white/70 text-xs mt-1">320 photographers</p>
+        </div>
+        <div class="absolute inset-0 z-0 group-hover:scale-105 transition-transform duration-500 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80')"></div>
+      </div>
+
+      <!-- Portrait & Headshots -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-[4/3] cursor-pointer">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80')"></div>
+        <div class="absolute bottom-0 left-0 p-5 z-20">
+          <div class="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3">
+            <i class="fa fa-user-circle-o text-white text-base"></i>
+          </div>
+          <h3 class="text-white font-semibold text-base leading-tight">Portrait &amp; Headshots</h3>
+          <p class="text-white/70 text-xs mt-1">280 photographers</p>
+        </div>
+        <div class="absolute inset-0 z-0 group-hover:scale-105 transition-transform duration-500 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80')"></div>
+      </div>
+
+      <!-- Commercial & Product -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-[4/3] cursor-pointer">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80')"></div>
+        <div class="absolute bottom-0 left-0 p-5 z-20">
+          <div class="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3">
+            <i class="fa fa-shopping-bag text-white text-base"></i>
+          </div>
+          <h3 class="text-white font-semibold text-base leading-tight">Commercial &amp; Product</h3>
+          <p class="text-white/70 text-xs mt-1">190 photographers</p>
+        </div>
+        <div class="absolute inset-0 z-0 group-hover:scale-105 transition-transform duration-500 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80')"></div>
+      </div>
+
+      <!-- Travel & Landscape -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-[4/3] cursor-pointer">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80')"></div>
+        <div class="absolute bottom-0 left-0 p-5 z-20">
+          <div class="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3">
+            <i class="fa fa-globe text-white text-base"></i>
+          </div>
+          <h3 class="text-white font-semibold text-base leading-tight">Travel &amp; Landscape</h3>
+          <p class="text-white/70 text-xs mt-1">160 photographers</p>
+        </div>
+        <div class="absolute inset-0 z-0 group-hover:scale-105 transition-transform duration-500 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80')"></div>
+      </div>
+
+      <!-- Fashion & Editorial -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-[4/3] cursor-pointer">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80')"></div>
+        <div class="absolute bottom-0 left-0 p-5 z-20">
+          <div class="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3">
+            <i class="fa fa-diamond text-white text-base"></i>
+          </div>
+          <h3 class="text-white font-semibold text-base leading-tight">Fashion &amp; Editorial</h3>
+          <p class="text-white/70 text-xs mt-1">140 photographers</p>
+        </div>
+        <div class="absolute inset-0 z-0 group-hover:scale-105 transition-transform duration-500 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80')"></div>
+      </div>
+
+      <!-- Real Estate -->
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-[4/3] cursor-pointer">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1560184897-ae75f418493e?w=600&q=80')"></div>
+        <div class="absolute bottom-0 left-0 p-5 z-20">
+          <div class="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3">
+            <i class="fa fa-building text-white text-base"></i>
+          </div>
+          <h3 class="text-white font-semibold text-base leading-tight">Real Estate &amp; Architecture</h3>
+          <p class="text-white/70 text-xs mt-1">110 photographers</p>
+        </div>
+        <div class="absolute inset-0 z-0 group-hover:scale-105 transition-transform duration-500 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1560184897-ae75f418493e?w=600&q=80')"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section id="how" class="py-24 bg-light">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-3 badge">Simple Process</p>
+      <h2 class="font-serif text-4xl md:text-5xl font-700 text-primary mb-4">How PhotoPlat works</h2>
+      <p class="text-muted max-w-md mx-auto">From discovery to delivery — we've made every step smooth and transparent.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fa fa-search text-accent text-xl"></i>
+        </div>
+        <div class="text-xs font-bold text-accent mb-2">01</div>
+        <h3 class="font-semibold text-lg text-primary mb-2">Search &amp; Filter</h3>
+        <p class="text-sm text-muted leading-relaxed">Browse photographers by niche, city, price range, and style. Use filters to narrow down to your perfect match.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fa fa-calendar-check-o text-accent text-xl"></i>
+        </div>
+        <div class="text-xs font-bold text-accent mb-2">02</div>
+        <h3 class="font-semibold text-lg text-primary mb-2">Book Instantly</h3>
+        <p class="text-sm text-muted leading-relaxed">Check real-time availability, choose your package, and confirm your booking with secure payment — all in minutes.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+          <i class="fa fa-image text-accent text-xl"></i>
+        </div>
+        <div class="text-xs font-bold text-accent mb-2">03</div>
+        <h3 class="font-semibold text-lg text-primary mb-2">Receive Your Photos</h3>
+        <p class="text-sm text-muted leading-relaxed">Your photographer delivers edited, high-resolution images through our platform. Rate your experience when done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PHOTOGRAPHERS LISTING SECTION ===================== -->
+<section id="photographers" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-3 badge">Top Talent</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-700 text-primary">Featured Photographers</h2>
+      </div>
+      <a href="#" class="text-sm font-medium text-accent hover:underline whitespace-nowrap flex items-center gap-1">
+        View all photographers <i class="fa fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+
+    <!-- Filter Pills -->
+    <div class="flex flex-wrap gap-2 mb-10">
+      <button class="bg-primary text-white text-xs font-medium px-4 py-2 rounded-full">All</button>
+      <button class="bg-white border border-border text-muted text-xs font-medium px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-colors">Wedding</button>
+      <button class="bg-white border border-border text-muted text-xs font-medium px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-colors">Portrait</button>
+      <button class="bg-white border border-border text-muted text-xs font-medium px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-colors">Commercial</button>
+      <button class="bg-white border border-border text-muted text-xs font-medium px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-colors">Fashion</button>
+      <button class="bg-white border border-border text-muted text-xs font-medium px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-colors">Travel</button>
+      <button class="bg-white border border-border text-muted text-xs font-medium px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-colors">Real Estate</button>
+    </div>
+
+    <!-- Photographer Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+      <!-- Card 1 -->
+      <div class="photographer-card bg-white border border-border rounded-2xl overflow-hidden group">
+        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1537944434965-cf4679d1a598?w=500&q=80')"></div>
+          <div class="absolute top-3 left-3">
+            <span class="bg-white text-primary text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">Wedding</span>
+          </div>
+          <div class="absolute top-3 right-3">
+            <button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50">
+              <i class="fa fa-heart-o text-muted text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <h3 class="font-semibold text-primary text-sm">Sofia Marchetti</h3>
+              <p class="text-xs text-muted mt-0.5"><i class="fa fa-map-marker mr-1"></i>New York, NY</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-muted">From</p>
+              <p class="text-sm font-semibold text-primary">$450</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <span class="text-xs text-muted ml-1">5.0 (128 reviews)</span>
+          </div>
+          <a href="#" class="block w-full text-center bg-primary text-white text-xs font-semibold py-2.5 rounded-xl hover:bg-gray-800 transition-colors">
+            <i class="fa fa-calendar-o mr-1.5"></i>Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="photographer-card bg-white border border-border rounded-2xl overflow-hidden group">
+        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1554080353-a576cf803bda?w=500&q=80')"></div>
+          <div class="absolute top-3 left-3">
+            <span class="bg-white text-primary text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">Portrait</span>
+          </div>
+          <div class="absolute top-3 right-3">
+            <button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50">
+              <i class="fa fa-heart-o text-muted text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <h3 class="font-semibold text-primary text-sm">James Okafor</h3>
+              <p class="text-xs text-muted mt-0.5"><i class="fa fa-map-marker mr-1"></i>Los Angeles, CA</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-muted">From</p>
+              <p class="text-sm font-semibold text-primary">$280</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star-half-o text-yellow-400 text-xs"></i>
+            <span class="text-xs text-muted ml-1">4.8 (94 reviews)</span>
+          </div>
+          <a href="#" class="block w-full text-center bg-primary text-white text-xs font-semibold py-2.5 rounded-xl hover:bg-gray-800 transition-colors">
+            <i class="fa fa-calendar-o mr-1.5"></i>Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="photographer-card bg-white border border-border rounded-2xl overflow-hidden group">
+        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=500&q=80')"></div>
+          <div class="absolute top-3 left-3">
+            <span class="bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">Top Pick</span>
+          </div>
+          <div class="absolute top-3 right-3">
+            <button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50">
+              <i class="fa fa-heart-o text-muted text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <h3 class="font-semibold text-primary text-sm">Priya Nambiar</h3>
+              <p class="text-xs text-muted mt-0.5"><i class="fa fa-map-marker mr-1"></i>Austin, TX</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-muted">From</p>
+              <p class="text-sm font-semibold text-primary">$380</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <span class="text-xs text-muted ml-1">5.0 (211 reviews)</span>
+          </div>
+          <a href="#" class="block w-full text-center bg-primary text-white text-xs font-semibold py-2.5 rounded-xl hover:bg-gray-800 transition-colors">
+            <i class="fa fa-calendar-o mr-1.5"></i>Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="photographer-card bg-white border border-border rounded-2xl overflow-hidden group">
+        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=500&q=80')"></div>
+          <div class="absolute top-3 left-3">
+            <span class="bg-white text-primary text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">Commercial</span>
+          </div>
+          <div class="absolute top-3 right-3">
+            <button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50">
+              <i class="fa fa-heart-o text-muted text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <h3 class="font-semibold text-primary text-sm">Luca Benedetti</h3>
+              <p class="text-xs text-muted mt-0.5"><i class="fa fa-map-marker mr-1"></i>Chicago, IL</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-muted">From</p>
+              <p class="text-sm font-semibold text-primary">$520</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star-o text-yellow-400 text-xs"></i>
+            <span class="text-xs text-muted ml-1">4.7 (67 reviews)</span>
+          </div>
+          <a href="#" class="block w-full text-center bg-primary text-white text-xs font-semibold py-2.5 rounded-xl hover:bg-gray-800 transition-colors">
+            <i class="fa fa-calendar-o mr-1.5"></i>Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="photographer-card bg-white border border-border rounded-2xl overflow-hidden group">
+        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=500&q=80')"></div>
+          <div class="absolute top-3 left-3">
+            <span class="bg-white text-primary text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">Travel</span>
+          </div>
+          <div class="absolute top-3 right-3">
+            <button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50">
+              <i class="fa fa-heart-o text-muted text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <h3 class="font-semibold text-primary text-sm">Amara Diallo</h3>
+              <p class="text-xs text-muted mt-0.5"><i class="fa fa-map-marker mr-1"></i>Miami, FL</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-muted">From</p>
+              <p class="text-sm font-semibold text-primary">$320</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star-half-o text-yellow-400 text-xs"></i>
+            <span class="text-xs text-muted ml-1">4.9 (83 reviews)</span>
+          </div>
+          <a href="#" class="block w-full text-center bg-primary text-white text-xs font-semibold py-2.5 rounded-xl hover:bg-gray-800 transition-colors">
+            <i class="fa fa-calendar-o mr-1.5"></i>Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="photographer-card bg-white border border-border rounded-2xl overflow-hidden group">
+        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80')"></div>
+          <div class="absolute top-3 left-3">
+            <span class="bg-white text-primary text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">Fashion</span>
+          </div>
+          <div class="absolute top-3 right-3">
+            <button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50">
+              <i class="fa fa-heart-o text-muted text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <h3 class="font-semibold text-primary text-sm">Elena Vasquez</h3>
+              <p class="text-xs text-muted mt-0.5"><i class="fa fa-map-marker mr-1"></i>Seattle, WA</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-muted">From</p>
+              <p class="text-sm font-semibold text-primary">$600</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <span class="text-xs text-muted ml-1">5.0 (156 reviews)</span>
+          </div>
+          <a href="#" class="block w-full text-center bg-primary text-white text-xs font-semibold py-2.5 rounded-xl hover:bg-gray-800 transition-colors">
+            <i class="fa fa-calendar-o mr-1.5"></i>Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="photographer-card bg-white border border-border rounded-2xl overflow-hidden group">
+        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&q=80')"></div>
+          <div class="absolute top-3 left-3">
+            <span class="bg-white text-primary text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">Real Estate</span>
+          </div>
+          <div class="absolute top-3 right-3">
+            <button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50">
+              <i class="fa fa-heart-o text-muted text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <h3 class="font-semibold text-primary text-sm">Marcus Chen</h3>
+              <p class="text-xs text-muted mt-0.5"><i class="fa fa-map-marker mr-1"></i>San Francisco, CA</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-muted">From</p>
+              <p class="text-sm font-semibold text-primary">$350</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star-half-o text-yellow-400 text-xs"></i>
+            <span class="text-xs text-muted ml-1">4.8 (72 reviews)</span>
+          </div>
+          <a href="#" class="block w-full text-center bg-primary text-white text-xs font-semibold py-2.5 rounded-xl hover:bg-gray-800 transition-colors">
+            <i class="fa fa-calendar-o mr-1.5"></i>Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="photographer-card bg-white border border-border rounded-2xl overflow-hidden group">
+        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+          <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=500&q=80')"></div>
+          <div class="absolute top-3 left-3">
+            <span class="bg-accent text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">New</span>
+          </div>
+          <div class="absolute top-3 right-3">
+            <button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:bg-gray-50">
+              <i class="fa fa-heart-o text-muted text-sm"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <h3 class="font-semibold text-primary text-sm">Yuki Tanaka</h3>
+              <p class="text-xs text-muted mt-0.5"><i class="fa fa-map-marker mr-1"></i>Portland, OR</p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-muted">From</p>
+              <p class="text-sm font-semibold text-primary">$240</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star text-yellow-400 text-xs"></i>
+            <i class="fa fa-star-o text-yellow-400 text-xs"></i>
+            <span class="text-xs text-muted ml-1">4.6 (18 reviews)</span>
+          </div>
+          <a href="#" class="block w-full text-center bg-primary text-white text-xs font-semibold py-2.5 rounded-xl hover:bg-gray-800 transition-colors">
+            <i class="fa fa-calendar-o mr-1.5"></i>Book Now
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Load More -->
+    <div class="text-center mt-12">
+      <a href="#" class="inline-flex items-center gap-2 border border-border text-primary text-sm font-semibold px-8 py-3 rounded-xl hover:bg-light transition-colors">
+        Load More Photographers <i class="fa fa-arrow-down text-xs"></i>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="py-24 bg-light">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent mb-3 badge">Testimonials</p>
+      <h2 class="font-serif text-4xl md:text-5xl font-700 text-primary">Loved by clients</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white border border-border rounded-2xl p-6">
+        <div class="flex gap-1 mb-4">
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-sm text-muted leading-relaxed mb-5">"Found our wedding photographer within 20 minutes. The booking process was flawless and the photos were beyond our expectations. Highly recommend PhotoPlat!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center text-accent font-semibold text-xs">SC</div>
+          <div>
+            <p class="text-sm font-semibold text-primary">Sarah &amp; Chris</p>
+            <p class="text-xs text-muted">Wedding in Denver, CO</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white border border-border rounded-2xl p-6">
+        <div class="flex gap-1 mb-4">
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-sm text-muted leading-relaxed mb-5">"As a startup founder, I needed professional headshots fast. I booked a photographer the same day. Photos were delivered within 48 hours. Incredible service."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-semibold text-xs">DP</div>
+          <div>
+            <p class="text-sm font-semibold text-primary">Dev Patel</p>
+            <p class="text-xs text-muted">Headshots in San Jose, CA</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white border border-border rounded-2xl p-6">
+        <div class="flex gap-1 mb-4">
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star text-yellow-400 text-sm"></i>
+          <i class="fa fa-star-half-o text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-sm text-muted leading-relaxed mb-5">"We needed product photography for our e-commerce launch. PhotoPlat made it incredibly easy to find a skilled commercial photographer within our budget."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-orange-100 flex items-center justify-center text-orange-700 font-semibold text-xs">RL</div>
+          <div>
+            <p class="text-sm font-semibold text-primary">Rachel Lee</p>
+            <p class="text-xs text-muted">Product shoot in Boston, MA</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA BANNER ===================== -->
+<section class="py-20 bg-primary">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <h2 class="font-serif text-4xl md:text-5xl text-white font-700 mb-4">Ready to find your photographer?</h2>
+    <p class="text-gray-400 mb-8 text-lg">Join thousands of clients who've found their perfect shot through PhotoPlat.</p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="#" class="bg-white text-primary text-sm font-semibold px-8 py-3.5 rounded-xl hover:bg-gray-100 transition-colors">
+        <i class="fa fa-search mr-2"></i>Browse Photographers
+      </a>
+      <a href="#" class="border border-white/30 text-white text-sm font-semibold px-8 py-3.5 rounded-xl hover:bg-white/10 transition-colors">
+        <i class="fa fa-camera mr-2"></i>List Your Services
+      </a>
+    </div>
+  </div>
+</section>
+{%endblock%}

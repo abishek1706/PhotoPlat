@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PhotoPlat — Book talented photographers, effortlessly</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          serif: ['Playfair Display', 'serif'],
+        },
+        colors: {
+          primary: '#111111',
+          accent: '#6366f1',
+          muted: '#6b7280',
+          light: '#f9fafb',
+          border: '#e5e7eb',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { font-family: 'Inter', sans-serif; }
+  .hero-bg {
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  }
+  .photographer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+  .photographer-card { transition: all 0.3s ease; }
+  .badge { letter-spacing: 0.08em; }
+  .nav-link:hover { color: #6366f1; }
+  input:focus, select:focus { outline: none; box-shadow: 0 0 0 2px #6366f1; }
+  .tab-pill { display: inline-flex; background: #f3f4f6; border-radius: 10px; padding: 3px; gap: 2px; }
+  .tab-pill a { font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 8px; color: #6b7280; text-decoration: none; transition: all 0.15s; }
+  .tab-pill a.active { background: #fff; color: #111; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+</style>
+{%block extra_head%}
+{%endblock%}
+</head>
+<body class="bg-white text-primary antialiased">
+{%block navbar%}
+<!-- ===================== NAVBAR ===================== -->
+<nav class="sticky top-0 z-50 bg-white border-b border-border">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center h-16 gap-6">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 flex-shrink-0 mr-4">
+        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+          <i class="fa fa-camera text-white text-sm"></i>
+        </div>
+        <span class="text-xl font-semibold tracking-tight text-primary">Photo<span class="text-accent">Plat</span></span>
+      </a>
+
+      <!-- Desktop Nav — centered links -->
+      <div class="hidden md:flex items-center gap-8 flex-1 justify-center">
+        <a href="#offers" class="text-xs font-semibold uppercase tracking-widest text-muted nav-link transition-colors">Browse</a>
+        <a href="#how" class="text-xs font-semibold uppercase tracking-widest text-muted nav-link transition-colors">How It Works</a>
+        <a href="#" class="text-xs font-semibold uppercase tracking-widest text-muted nav-link transition-colors">Pricing</a>
+        <a href="#" class="text-xs font-semibold uppercase tracking-widest text-muted nav-link transition-colors">Blog</a>
+
+        <a href="#" class="text-xs font-semibold uppercase tracking-widest text-muted nav-link transition-colors">For Photographers</a>
+      </div>
+
+      <!-- Right: Client Login + Book Now -->
+      <div class="hidden md:flex items-center gap-3 flex-shrink-0 ml-4">
+        <a href="#" class="text-xs font-semibold uppercase tracking-widest text-muted hover:text-primary transition-colors">Log In</a>
+        <a href="#" class="text-xs font-bold uppercase tracking-widest bg-accent text-white px-5 py-2.5 rounded-lg hover:bg-indigo-600 transition-colors whitespace-nowrap">Book Now</a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <div class="md:hidden ml-auto">
+        <button class="text-muted text-xl" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden border-t border-border bg-white px-6 py-5 space-y-1">
+    <a href="#offers" class="block text-sm font-medium text-muted hover:text-primary py-2">Browse</a>
+    <a href="#how" class="block text-sm font-medium text-muted hover:text-primary py-2">How It Works</a>
+    <a href="#" class="block text-sm font-medium text-muted hover:text-primary py-2">Pricing</a>
+    <a href="#" class="block text-sm font-medium text-muted hover:text-primary py-2">Blog</a>
+
+    <!-- For Photographers mobile -->
+    <div class="border-t border-border pt-3 mt-2">
+      <a href="#" class="flex items-center gap-2 text-sm font-semibold text-accent hover:text-indigo-700 py-2 uppercase tracking-widest">
+        <i class="fa fa-camera w-4 text-center"></i> For Photographers
+      </a>
+    </div>
+
+    <!-- Mobile CTAs -->
+    <div class="border-t border-border pt-4 mt-2 flex gap-3">
+      <a href="#" class="flex-1 text-center text-sm font-medium text-muted border border-border px-4 py-2.5 rounded-lg hover:bg-light">Log In</a>
+      <a href="#" class="flex-1 text-center text-sm font-bold bg-accent text-white px-4 py-2.5 rounded-lg hover:bg-indigo-600">Book Now</a>
+    </div>
+  </div>
+</nav>
+{%endblock%}
+
+{%block content%}
+{%endblock%}
+{%block footer%}
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-white border-t border-border pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+      <!-- Brand -->
+      <div class="lg:col-span-2">
+        <a href="#" class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <i class="fa fa-camera text-white text-sm"></i>
+          </div>
+          <span class="text-xl font-semibold text-primary">Photo<span class="text-accent">Plat</span></span>
+        </a>
+        <p class="text-sm text-muted leading-relaxed max-w-xs mb-5">Book talented photographers, effortlessly. Connecting clients with verified professional photographers across the globe.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 border border-border rounded-lg flex items-center justify-center text-muted hover:border-primary hover:text-primary transition-colors">
+            <i class="fa fa-instagram text-sm"></i>
+          </a>
+          <a href="#" class="w-9 h-9 border border-border rounded-lg flex items-center justify-center text-muted hover:border-primary hover:text-primary transition-colors">
+            <i class="fa fa-twitter text-sm"></i>
+          </a>
+          <a href="#" class="w-9 h-9 border border-border rounded-lg flex items-center justify-center text-muted hover:border-primary hover:text-primary transition-colors">
+            <i class="fa fa-facebook text-sm"></i>
+          </a>
+          <a href="#" class="w-9 h-9 border border-border rounded-lg flex items-center justify-center text-muted hover:border-primary hover:text-primary transition-colors">
+            <i class="fa fa-linkedin text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Platform -->
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-primary mb-4">Platform</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Browse Photographers</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Photography Niches</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">How It Works</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Pricing</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Gift Cards</a></li>
+        </ul>
+      </div>
+
+      <!-- For Photographers -->
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-primary mb-4">Photographers</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Join as a Pro</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Photographer Hub</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Success Stories</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Payout Info</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Community</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-primary mb-4">Support</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Help Center</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Contact Us</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Terms of Service</a></li>
+          <li><a href="#" class="text-sm text-muted hover:text-primary transition-colors">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-border pt-8 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-xs text-muted">&copy; 2026 PhotoPlat. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-xs text-muted">
+        <span class="flex items-center gap-1"><i class="fa fa-lock text-green-500"></i> Secure payments</span>
+        <span class="flex items-center gap-1"><i class="fa fa-shield text-accent"></i> Verified photographers</span>
+      </div>
+    </div>
+  </div>
+</footer>
+{%endblock%}
+
+</body>
+</html>

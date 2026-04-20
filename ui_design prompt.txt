@@ -1,0 +1,15 @@
+PhotoPlat UI Prompt:
+
+Platform: Photography listing & booking platform called PhotoPlat — tagline "Book talented photographers, effortlessly."
+Theme: Clean Minimal — white-dominant, distraction-free, portfolio-focused.
+Colors: Background #ffffff / #f9fafb (light gray), Primary/Text #111111, Accent #6366f1 (indigo), Muted text #6b7280, Border #e5e7eb
+Typography: Headings → Playfair Display serif, italic accent words; Body/UI → Inter sans-serif. Font weights: 400 regular, 500 medium, 600 semibold only. Nav links: uppercase, extra-wide tracking (tracking-widest), 12px.
+Buttons: Primary CTA = bg-accent (#6366f1) white text, rounded-lg, uppercase bold label e.g. "Book Now". Secondary = black bg-#111 white text. Outline = white bg + border-border + muted text.
+Cards: White bg, border: 0.5px solid #e5e7eb, border-radius: 16px, hover lift translateY(-4px) with soft shadow. Portfolio image on top (aspect-4/3), badge top-left, heart icon top-right, name + location + price + stars + CTA inside.
+Navbar: Sticky white, logo left (camera icon + PhotoPlat), centered uppercase nav links, right side: Log In text link + solid Book Now accent button. "For Photographers" link has a dropdown with: Photographer Login, Join as a Pro, Pro Dashboard, Availability Settings, Payouts & Earnings, Help.
+Sections order: Navbar → Hero (serif headline + 3-field search bar) → Stats strip → Offers/Categories (image overlay cards grid) → How It Works (3 steps) → Photographer Listings (filter pills + card grid) → Testimonials → CTA Banner (dark #111) → Footer.
+Design patterns: Uppercase section labels with wide tracking + accent color above serif h2. Image cards use bg-cover with gradient overlay + white text. Filter pills: active = black bg white text, inactive = white + border. Stars = FontAwesome fa-star yellow. Badges = white pill top-left on cards. Section alternates: white bg → #f9fafb bg.
+Icons: FontAwesome 4.7 CDN. CSS: Tailwind CDN. Fonts: Google Fonts (Inter + Playfair Display).
+
+
+Paste this at the start of any new conversation and your UI will stay pixel-consistent with this one. ✅Sonnet 4.6
