@@ -215,24 +215,15 @@
         <div class="divider-text mb-6">or register with email</div>
 
         <!-- Form -->
-        <form onsubmit="handleRegister(event)" novalidate>
-
-          <!-- Full Name -->
-          <div class="mb-4">
-            <label class="block text-xs font-semibold uppercase tracking-widest text-muted mb-2">Full Name</label>
-            <div class="input-wrapper">
-              <i class="fa fa-user input-icon"></i>
-              <input type="text" id="fullname" placeholder="Jane Smith" class="input-field" />
-            </div>
-            <p id="name-err" class="text-xs text-red-500 mt-1 hidden"><i class="fa fa-exclamation-circle mr-1"></i>Please enter your full name.</p>
-          </div>
+        <form method="post" action="{%url 'register_page' %}" >
+          {% csrf_token %}
 
           <!-- Email -->
           <div class="mb-4">
             <label class="block text-xs font-semibold uppercase tracking-widest text-muted mb-2">Email Address</label>
             <div class="input-wrapper">
               <i class="fa fa-envelope input-icon"></i>
-              <input type="email" id="email" placeholder="jane@example.com" class="input-field" />
+              <input type="email" id="email" placeholder="jane@example.com" class="input-field" name="email" />
             </div>
             <p id="email-err" class="text-xs text-red-500 mt-1 hidden"><i class="fa fa-exclamation-circle mr-1"></i>Please enter a valid email address.</p>
           </div>
@@ -242,7 +233,7 @@
             <label class="block text-xs font-semibold uppercase tracking-widest text-muted mb-2">Password</label>
             <div class="input-wrapper">
               <i class="fa fa-lock input-icon"></i>
-              <input type="password" id="password" placeholder="Min. 8 characters" class="input-field" oninput="checkStrength(this.value)" />
+              <input type="password" id="password" placeholder="Min. 8 characters" class="input-field" oninput="checkStrength(this.value)" name="password1"/>
               <button type="button" class="toggle-pw" onclick="togglePw('password', this)">
                 <i class="fa fa-eye-slash"></i>
               </button>
@@ -265,7 +256,7 @@
             <label class="block text-xs font-semibold uppercase tracking-widest text-muted mb-2">Confirm Password</label>
             <div class="input-wrapper">
               <i class="fa fa-lock input-icon"></i>
-              <input type="password" id="confirm" placeholder="Re-enter your password" class="input-field" />
+              <input type="password" id="confirm" placeholder="Re-enter your password" class="input-field" name="password2" />
               <button type="button" class="toggle-pw" onclick="togglePw('confirm', this)">
                 <i class="fa fa-eye-slash"></i>
               </button>
@@ -298,7 +289,7 @@
         <div class="border-t border-border mt-8 pt-6 text-center">
           <p class="text-sm text-muted">
             Already registered?
-            <a href="#" class="text-accent font-semibold hover:underline ml-1">
+            <a href="{%url 'login_page'%}" class="text-accent font-semibold hover:underline ml-1">
               <i class="fa fa-sign-in mr-1"></i>Log in here
             </a>
           </p>
