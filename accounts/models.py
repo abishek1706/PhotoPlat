@@ -34,6 +34,7 @@ class MyUserManager(BaseUserManager):
 
 
 class MyUser(AbstractBaseUser):
+
     email = models.EmailField(
         verbose_name="email address",
         max_length=255,
@@ -65,3 +66,37 @@ class MyUser(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+class profile(models.Model):
+
+    class EMAIL_STATUS(models.TextChoices):
+        PENDING=("pending","Pending")
+        VERIFIED=("verified","Verified")
+
+
+    class KYC_STATUS(models.TextChoices):
+        NOT_SUBMITTED=("not_submitted","Not Submitted")
+        IN_REVIEW=("in_review","In_review")
+        REJECTED=("rejected","Rejected")
+        VERIFIED=("verified","Verified")
+
+
+    user=models.OneToOneField(MyUser,on_delete=models.CASCADE)
+    fullname=models.CharField(max_length=50)
+    date_of_birth=models.DateField()
+    citizenship_no=models.CharField(max_length=16)
+    issued_district=models.CharField(max_length=50)
+    permanent_address=models.CharField(max_length=50)
+    #documents
+    citizenship_front=models.ImageField(upload_to="citizenship",null=True,blank=True)
+    citizenship_back=models.ImageField(upload_to="citizenship",null=True,blank=True)
+
+    #verifcation
+    email_verified=models.CharField(choices=EMAIL_STATUS,default=EMAIL_STATUS.PENDING)
+    kyc_verified=models.CharField(choices=KYC_STATUS, default=KYC_STATUS.NOT_SUBMITTED)
+
+    #rejection
+    rejection_reason=models.TextField(null=True,blank=True)
+
+    def __str__(self):
+        return f"{self.user.email}'s profile"

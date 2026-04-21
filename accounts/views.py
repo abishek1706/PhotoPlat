@@ -3,6 +3,10 @@ from .admin import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login
 
+
+def profile_view(request):
+    return render(request,'accounts/profile.html')
+
 def login_view(request):
     if request.method=="POST":
         user= authenticate(request,

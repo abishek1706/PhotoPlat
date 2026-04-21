@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Profile — PhotoPlat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f9fafb;
+    --text: #111111;
+    --accent: #6366f1;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg-alt); color: var(--text); }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 64px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 8px; font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--text); text-decoration: none; }
+  .nav-logo i { color: var(--accent); font-size: 22px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.active { color: var(--text); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .btn-login { font-size: 13px; color: var(--text); font-weight: 500; cursor: pointer; }
+  .btn-book { background: var(--accent); color: #fff; border: none; padding: 9px 20px; border-radius: 8px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; transition: opacity 0.2s; }
+  .btn-book:hover { opacity: 0.88; }
+
+  /* PROFILE LAYOUT */
+  .profile-container { max-width: 900px; margin: 40px auto; padding: 0 24px 80px; }
+
+  /* PROFILE CARD */
+  .profile-card {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+  .avatar-wrap { position: relative; flex-shrink: 0; }
+  .avatar {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--border);
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 42px; color: var(--accent); overflow: hidden;
+  }
+  .avatar-edit {
+    position: absolute; bottom: 4px; right: 4px;
+    width: 30px; height: 30px;
+    background: var(--accent); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border: 2px solid #fff;
+    transition: opacity 0.2s;
+  }
+  .avatar-edit:hover { opacity: 0.85; }
+  .avatar-edit i { color: #fff; font-size: 12px; }
+  .profile-info { flex: 1; }
+  .profile-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .profile-role { font-size: 13px; color: var(--muted); margin-bottom: 14px; letter-spacing: 0.04em; }
+  .profile-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 18px; }
+  .meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+  .meta-item i { color: var(--accent); font-size: 13px; }
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .badge-verified { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+  .badge-kyc { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+  .badge-kyc-pending { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+  .badge-unverified { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+  .profile-actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .btn-logout {
+    display: flex; align-items: center; gap: 7px;
+    background: #111; color: #fff;
+    border: none; padding: 10px 18px; border-radius: 8px;
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    cursor: pointer; transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .btn-logout:hover { opacity: 0.85; }
+  .btn-edit-profile {
+    display: flex; align-items: center; gap: 7px;
+    background: #fff; color: var(--text);
+    border: 1px solid var(--border); padding: 9px 18px; border-radius: 8px;
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-edit-profile:hover { border-color: #aaa; }
+
+  /* SECTION CARD */
+  .section-card {
+    background: #fff;
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .section-header {
+    padding: 22px 32px 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .section-label {
+    font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--accent); margin-bottom: 4px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: var(--text);
+  }
+  .section-body { padding: 20px 32px 28px; }
+
+  /* EMAIL VERIFICATION */
+  .email-row {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--bg-alt); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 18px; margin-bottom: 14px;
+  }
+  .email-addr { font-size: 14px; color: var(--text); font-weight: 500; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+  .dot-green { background: #22c55e; }
+  .dot-yellow { background: #f59e0b; }
+  .dot-red { background: #ef4444; }
+  .verify-note { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+  .btn-verify-email {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    border: none; padding: 10px 20px; border-radius: 8px;
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-verify-email:hover { opacity: 0.88; }
+  .btn-verify-email:disabled { opacity: 0.6; cursor: not-allowed; }
+  .verify-sent-msg {
+    display: none; margin-top: 14px;
+    background: #ecfdf5; border: 1px solid #a7f3d0;
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 13px; color: #065f46;
+    align-items: center; gap: 8px;
+  }
+
+  /* KYC SECTION */
+  .kyc-status-bar {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--bg-alt); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 18px; margin-bottom: 18px;
+  }
+  .kyc-status-icon { font-size: 22px; }
+  .kyc-status-text .label { font-size: 13px; font-weight: 600; color: var(--text); }
+  .kyc-status-text .sublabel { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 22px; }
+  .tab {
+    padding: 10px 20px; font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent;
+    transition: all 0.18s; margin-bottom: -1px;
+  }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* KYC FORM */
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .form-input {
+    padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px;
+    font-size: 13.5px; font-family: 'Inter', sans-serif; color: var(--text);
+    background: #fff; transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-input:focus { border-color: var(--accent); }
+
+  /* UPLOAD BOX */
+  .upload-box {
+    border: 1.5px dashed var(--border); border-radius: 12px;
+    padding: 24px 20px; text-align: center;
+    cursor: pointer; transition: all 0.2s;
+    background: var(--bg-alt); position: relative;
+  }
+  .upload-box:hover { border-color: var(--accent); background: #eef2ff; }
+  .upload-box.has-file { border-color: #22c55e; background: #f0fdf4; border-style: solid; }
+  .upload-box input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+  .upload-icon { font-size: 26px; color: var(--muted); margin-bottom: 8px; }
+  .upload-box.has-file .upload-icon { color: #22c55e; }
+  .upload-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .upload-sub { font-size: 11.5px; color: var(--muted); }
+  .upload-filename { font-size: 12px; color: #065f46; font-weight: 600; margin-top: 6px; }
+
+  .btn-submit-kyc {
+    width: 100%; background: var(--accent); color: #fff;
+    border: none; padding: 13px; border-radius: 10px;
+    font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+    cursor: pointer; margin-top: 8px; transition: opacity 0.2s;
+  }
+  .btn-submit-kyc:hover { opacity: 0.88; }
+  .kyc-success { display: none; text-align: center; padding: 24px 0; }
+  .kyc-success i { font-size: 48px; color: #22c55e; margin-bottom: 12px; display: block; }
+  .kyc-success p { font-size: 14px; color: var(--muted); }
+  .kyc-success strong { display: block; font-family: 'Playfair Display', serif; font-size: 19px; color: var(--text); margin-bottom: 6px; }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45); z-index: 200;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: #fff; border-radius: 16px;
+    padding: 36px 32px; max-width: 420px; width: 90%;
+    text-align: center; position: relative;
+    animation: modalIn 0.22s ease;
+  }
+  @keyframes modalIn { from { opacity:0; transform: translateY(-16px) scale(0.97); } to { opacity:1; transform: none; } }
+  .modal-close { position: absolute; top: 14px; right: 18px; font-size: 20px; cursor: pointer; color: var(--muted); }
+  .modal h3 { font-family: 'Playfair Display', serif; font-size: 21px; margin-bottom: 8px; }
+  .modal p { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+  .modal-btn {
+    background: #111; color: #fff; border: none;
+    padding: 12px 28px; border-radius: 8px; font-size: 13px;
+    font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* HOVER CARD LIFT */
+  .section-card, .profile-card { transition: box-shadow 0.2s; }
+  .section-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
+
+  @media (max-width: 640px) {
+    .profile-card { flex-direction: column; }
+    .profile-actions { flex-direction: row; align-items: center; width: 100%; }
+    .form-row { grid-template-columns: 1fr; }
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+    .profile-container { padding: 0 12px 60px; }
+    .section-body { padding: 16px 18px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-logo">
+    <i class="fa fa-camera"></i>
+    <span>PhotoPlat</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Explore</a></li>
+    <li><a href="#">Portfolio</a></li>
+    <li><a href="#" class="active">Profile</a></li>
+    <li><a href="#">For Photographers</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="btn-login">Log In</span>
+    <button class="btn-book"><i class="fa fa-calendar" style="margin-right:6px"></i>Book Now</button>
+  </div>
+</nav>
+
+<!-- PROFILE CONTAINER -->
+<div class="profile-container">
+
+  <!-- PROFILE CARD -->
+  <div class="profile-card">
+    <div class="avatar-wrap">
+      <div class="avatar" id="avatarPreview">
+        <i class="fa fa-user"></i>
+      </div>
+      <div class="avatar-edit" onclick="document.getElementById('avatarInput').click()" title="Change photo">
+        <i class="fa fa-camera"></i>
+      </div>
+      <input type="file" id="avatarInput" accept="image/*" style="display:none" onchange="previewAvatar(event)"/>
+    </div>
+
+    <div class="profile-info">
+      <div class="profile-name">Ananya Sharma</div>
+      <div class="profile-role">Portrait & Wedding Photographer &nbsp;·&nbsp; Kathmandu, Nepal</div>
+      <div class="profile-meta">
+        <div class="meta-item"><i class="fa fa-envelope"></i> ananya@example.com</div>
+        <div class="meta-item"><i class="fa fa-phone"></i> +977 98XXXXXXXX</div>
+        <div class="meta-item"><i class="fa fa-calendar"></i> Member since Jan 2024</div>
+      </div>
+      <div class="badge-row">
+        <span class="badge badge-unverified" id="emailBadge"><span class="status-dot dot-red"></span> Email Unverified</span>
+        <span class="badge badge-kyc-pending" id="kycBadge"><span class="status-dot dot-yellow"></span> KYC Pending</span>
+      </div>
+    </div>
+
+    <div class="profile-actions">
+      <button class="btn-logout" onclick="document.getElementById('logoutModal').classList.add('open')">
+        <i class="fa fa-sign-out"></i> Logout
+      </button>
+      <button class="btn-edit-profile">
+        <i class="fa fa-pencil"></i> Edit Profile
+      </button>
+    </div>
+  </div>
+
+  <!-- EMAIL VERIFICATION CARD -->
+  <div class="section-card">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Account Security</div>
+        <div class="section-title">Email Verification</div>
+      </div>
+      <span class="badge badge-unverified" id="emailStatusBadge2" style="margin-top: 18px;">
+        <span class="status-dot dot-red"></span> Not Verified
+      </span>
+    </div>
+    <div class="section-body">
+      <div class="email-row">
+        <div>
+          <div style="font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-bottom:4px; font-weight:600;">Registered Email</div>
+          <div class="email-addr"><i class="fa fa-envelope" style="color:var(--accent); margin-right:7px;"></i>ananya@example.com</div>
+        </div>
+        <span class="badge badge-unverified" id="inlineEmailBadge"><span class="status-dot dot-red"></span> Unverified</span>
+      </div>
+      <p class="verify-note">
+        Your email address is not yet verified. Verifying your email helps secure your account and enables booking notifications, receipts, and important updates from PhotoPlat.
+      </p>
+      <button class="btn-verify-email" id="sendVerifyBtn" onclick="sendVerification()">
+        <i class="fa fa-paper-plane"></i> Send Verification Link
+      </button>
+      <div class="verify-sent-msg" id="verifySentMsg" style="display:flex;">
+        <!-- shown after click -->
+      </div>
+    </div>
+  </div>
+
+  <!-- KYC VERIFICATION CARD -->
+  <div class="section-card">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Identity Verification</div>
+        <div class="section-title">KYC Verification</div>
+      </div>
+      <span class="badge badge-kyc-pending" id="kycStatusBadge" style="margin-top: 18px;">
+        <span class="status-dot dot-yellow"></span> Pending
+      </span>
+    </div>
+    <div class="section-body">
+      <div class="kyc-status-bar" id="kycStatusBar">
+        <span class="kyc-status-icon">🪪</span>
+        <div class="kyc-status-text">
+          <div class="label">KYC Not Submitted</div>
+          <div class="sublabel">Complete identity verification to unlock full booking and payout features.</div>
+        </div>
+      </div>
+
+      <!-- KYC FORM -->
+      <div id="kycFormWrap">
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab('personal', this)">Personal Info</div>
+          <div class="tab" onclick="switchTab('citizenship', this)">Citizenship Docs</div>
+          <div class="tab" onclick="switchTab('review', this)">Review & Submit</div>
+        </div>
+
+        <!-- TAB 1: Personal Info -->
+        <div class="tab-content active" id="tab-personal">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Legal Name</label>
+              <input class="form-input" placeholder="As on citizenship card" id="fullName"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Date of Birth</label>
+              <input class="form-input" type="date" id="dob"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Citizenship Number</label>
+              <input class="form-input" placeholder="e.g. 01-01-00-XXXXX" id="citizenNo"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">District of Issue</label>
+              <input class="form-input" placeholder="e.g. Kathmandu" id="district"/>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Permanent Address</label>
+              <input class="form-input" placeholder="Province, District, Municipality, Ward No." id="address"/>
+            </div>
+          </div>
+          <button class="btn-submit-kyc" style="margin-top:4px" onclick="switchTabByName('citizenship')">
+            Next: Upload Documents <i class="fa fa-arrow-right" style="margin-left:6px"></i>
+          </button>
+        </div>
+
+        <!-- TAB 2: Documents -->
+        <div class="tab-content" id="tab-citizenship">
+          <div style="margin-bottom:8px; font-size:13px; color:var(--muted); line-height:1.6; padding-bottom:14px; border-bottom:1px solid var(--border);">
+            Please upload clear photos or scans of your <strong style="color:var(--text)">Nepali Citizenship Certificate</strong> — both sides required. File formats: JPG, PNG or PDF · Max 5MB each.
+          </div>
+
+          <div style="margin-top:18px; margin-bottom:6px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.12em; color:var(--muted);">Citizenship — Front Side</div>
+          <div class="upload-box" id="frontBox" onclick="triggerUpload('frontFile', 'frontBox', 'frontName', 'frontIcon')">
+            <input type="file" id="frontFile" accept="image/*,.pdf" onchange="handleUpload('frontFile','frontBox','frontName','frontIcon')"/>
+            <div class="upload-icon"><i class="fa fa-id-card" id="frontIcon"></i></div>
+            <div class="upload-title">Upload Front of Citizenship</div>
+            <div class="upload-sub">Shows your photo, name, date of birth</div>
+            <div class="upload-filename" id="frontName"></div>
+          </div>
+
+          <div style="margin-top:20px; margin-bottom:6px; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.12em; color:var(--muted);">Citizenship — Back Side</div>
+          <div class="upload-box" id="backBox" onclick="triggerUpload('backFile', 'backBox', 'backName', 'backIcon')">
+            <input type="file" id="backFile" accept="image/*,.pdf" onchange="handleUpload('backFile','backBox','backName','backIcon')"/>
+            <div class="upload-icon"><i class="fa fa-id-card-o" id="backIcon"></i></div>
+            <div class="upload-title">Upload Back of Citizenship</div>
+            <div class="upload-sub">Shows address, spouse details, issue date</div>
+            <div class="upload-filename" id="backName"></div>
+          </div>
+
+          <div style="display:flex; gap:12px; margin-top:18px;">
+            <button class="btn-submit-kyc" style="background:#111; flex:0 0 auto; padding:13px 22px; width:auto;" onclick="switchTabByName('personal')">
+              <i class="fa fa-arrow-left" style="margin-right:6px"></i> Back
+            </button>
+            <button class="btn-submit-kyc" onclick="switchTabByName('review')">
+              Review Submission <i class="fa fa-arrow-right" style="margin-left:6px"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 3: Review -->
+        <div class="tab-content" id="tab-review">
+          <div style="background:var(--bg-alt); border:1px solid var(--border); border-radius:10px; padding:18px 20px; margin-bottom:18px;">
+            <div style="font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); font-weight:600; margin-bottom:12px;">Personal Details</div>
+            <div id="reviewDetails" style="font-size:13.5px; color:var(--text); line-height:2;"></div>
+          </div>
+          <div style="background:var(--bg-alt); border:1px solid var(--border); border-radius:10px; padding:18px 20px; margin-bottom:18px;">
+            <div style="font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); font-weight:600; margin-bottom:12px;">Uploaded Documents</div>
+            <div id="reviewDocs" style="font-size:13.5px; color:var(--text); line-height:2;"></div>
+          </div>
+          <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:12px 16px; font-size:12.5px; color:#92400e; margin-bottom:18px;">
+            <i class="fa fa-info-circle" style="margin-right:6px;"></i>
+            By submitting, you confirm all information is accurate. KYC review takes 1–3 business days.
+          </div>
+          <div style="display:flex; gap:12px;">
+            <button class="btn-submit-kyc" style="background:#111; flex:0 0 auto; padding:13px 22px; width:auto;" onclick="switchTabByName('citizenship')">
+              <i class="fa fa-arrow-left" style="margin-right:6px"></i> Back
+            </button>
+            <button class="btn-submit-kyc" onclick="submitKYC()">
+              <i class="fa fa-check" style="margin-right:8px"></i> Submit KYC
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- KYC SUCCESS STATE -->
+      <div class="kyc-success" id="kycSuccess">
+        <i class="fa fa-check-circle"></i>
+        <strong>KYC Submitted Successfully!</strong>
+        <p>Your documents are under review. You'll be notified within <br>1–3 business days once verified.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- LOGOUT CONFIRMATION MODAL -->
+<div class="modal-overlay" id="logoutModal">
+  <div class="modal">
+    <span class="modal-close" onclick="document.getElementById('logoutModal').classList.remove('open')">&times;</span>
+    <div style="font-size:40px; margin-bottom:10px;">👋</div>
+    <h3>Logging Out?</h3>
+    <p>You'll be signed out of your PhotoPlat account. Any unsaved changes will be lost.</p>
+    <div style="display:flex; gap:12px; justify-content:center;">
+      <button class="modal-btn" style="background:#fff; color:var(--text); border:1px solid var(--border);" onclick="document.getElementById('logoutModal').classList.remove('open')">Cancel</button>
+      <button class="modal-btn" onclick="confirmLogout()">Yes, Log Out</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// AVATAR PREVIEW
+function previewAvatar(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const av = document.getElementById('avatarPreview');
+    av.innerHTML = `<img src="${ev.target.result}" style="width:110px;height:110px;border-radius:50%;object-fit:cover;" alt="Profile"/>`;
+  };
+  reader.readAsDataURL(file);
+}
+
+// EMAIL VERIFICATION
+let emailSent = false;
+function sendVerification() {
+  if (emailSent) return;
+  const btn = document.getElementById('sendVerifyBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...';
+  setTimeout(() => {
+    emailSent = true;
+    btn.innerHTML = '<i class="fa fa-check"></i> Link Sent!';
+    const msg = document.getElementById('verifySentMsg');
+    msg.style.display = 'flex';
+    msg.innerHTML = `<i class="fa fa-check-circle" style="color:#22c55e; font-size:16px;"></i>&nbsp; Verification link sent to <strong style="margin: 0 4px;">ananya@example.com</strong>. Please check your inbox and spam folder.`;
+    // Simulate verified after 4s
+    setTimeout(() => {
+      document.getElementById('emailBadge').className = 'badge badge-verified';
+      document.getElementById('emailBadge').innerHTML = '<span class="status-dot dot-green"></span> Email Verified';
+      document.getElementById('emailStatusBadge2').className = 'badge badge-verified';
+      document.getElementById('emailStatusBadge2').innerHTML = '<span class="status-dot dot-green"></span> Verified';
+      document.getElementById('inlineEmailBadge').className = 'badge badge-verified';
+      document.getElementById('inlineEmailBadge').innerHTML = '<span class="status-dot dot-green"></span> Verified';
+    }, 4000);
+  }, 1600);
+}
+
+// KYC TABS
+function switchTab(name, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const tc = document.getElementById('tab-' + name);
+  if (tc) tc.classList.add('active');
+  if (name === 'review') populateReview();
+}
+function switchTabByName(name) {
+  const tabs = document.querySelectorAll('.tab');
+  const map = { personal: 0, citizenship: 1, review: 2 };
+  switchTab(name, tabs[map[name]]);
+}
+
+// UPLOAD HANDLING
+function triggerUpload(fileId) {
+  // handled by input click from box click
+}
+function handleUpload(fileId, boxId, nameId, iconId) {
+  const file = document.getElementById(fileId).files[0];
+  if (!file) return;
+  const box = document.getElementById(boxId);
+  box.classList.add('has-file');
+  document.getElementById(nameId).textContent = '✓ ' + file.name;
+  document.getElementById(iconId).className = 'fa fa-check-circle';
+}
+
+// REVIEW POPULATE
+function populateReview() {
+  const n = document.getElementById('fullName').value || '—';
+  const d = document.getElementById('dob').value || '—';
+  const c = document.getElementById('citizenNo').value || '—';
+  const dist = document.getElementById('district').value || '—';
+  const addr = document.getElementById('address').value || '—';
+  document.getElementById('reviewDetails').innerHTML = `
+    <b>Full Name:</b> ${n}<br>
+    <b>Date of Birth:</b> ${d}<br>
+    <b>Citizenship No:</b> ${c}<br>
+    <b>District:</b> ${dist}<br>
+    <b>Address:</b> ${addr}
+  `;
+  const fn = document.getElementById('frontName').textContent || '— Not uploaded';
+  const bn = document.getElementById('backName').textContent || '— Not uploaded';
+  document.getElementById('reviewDocs').innerHTML = `
+    <b>Front Side:</b> ${fn}<br>
+    <b>Back Side:</b> ${bn}
+  `;
+}
+
+// KYC SUBMIT
+function submitKYC() {
+  const submitBtn = document.querySelector('#tab-review .btn-submit-kyc:last-child');
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Submitting...';
+  setTimeout(() => {
+    document.getElementById('kycFormWrap').style.display = 'none';
+    document.getElementById('kycSuccess').style.display = 'block';
+    document.getElementById('kycStatusBar').innerHTML = `
+      <span class="kyc-status-icon">⏳</span>
+      <div class="kyc-status-text">
+        <div class="label">KYC Under Review</div>
+        <div class="sublabel">Documents submitted. Verification takes 1–3 business days.</div>
+      </div>
+    `;
+    document.getElementById('kycStatusBadge').className = 'badge badge-kyc';
+    document.getElementById('kycStatusBadge').innerHTML = '<span class="status-dot dot-yellow"></span> Under Review';
+    document.getElementById('kycBadge').className = 'badge badge-kyc';
+    document.getElementById('kycBadge').innerHTML = '<span class="status-dot dot-yellow"></span> KYC Under Review';
+  }, 2000);
+}
+
+// LOGOUT
+function confirmLogout() {
+  document.getElementById('logoutModal').classList.remove('open');
+  const btn = document.querySelector('.btn-logout');
+  btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Logging out...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = '<i class="fa fa-check"></i> Logged Out';
+  }, 1500);
+}
+</script>
+</body>
+</html>
