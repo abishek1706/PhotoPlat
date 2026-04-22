@@ -76,17 +76,19 @@ class profile(models.Model):
 
     class KYC_STATUS(models.TextChoices):
         NOT_SUBMITTED=("not_submitted","Not Submitted")
-        IN_REVIEW=("in_review","In_review")
+        IN_REVIEW=("in_review","In review")
         REJECTED=("rejected","Rejected")
         VERIFIED=("verified","Verified")
 
 
-    user=models.OneToOneField(MyUser,on_delete=models.CASCADE)
+    user=models.OneToOneField(MyUser,on_delete=models.CASCADE,null=True)
     fullname=models.CharField(max_length=50)
-    date_of_birth=models.DateField()
-    citizenship_no=models.CharField(max_length=16)
-    issued_district=models.CharField(max_length=50)
-    permanent_address=models.CharField(max_length=50)
+    date_of_birth=models.DateField(null=True)
+    citizenship_no=models.CharField(max_length=16,null=True)
+    issued_district=models.CharField(max_length=50,null=True)
+    permanent_address=models.CharField(max_length=50,null=True)
+    speciality=models.CharField(max_length=50,null=True)
+    profile_photo=models.ImageField(upload_to="profile_photo",null=True,blank=True)
     #documents
     citizenship_front=models.ImageField(upload_to="citizenship",null=True,blank=True)
     citizenship_back=models.ImageField(upload_to="citizenship",null=True,blank=True)
