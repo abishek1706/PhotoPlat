@@ -4,6 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
+from django.utils.html import format_html
 
 from accounts.models import MyUser,profile
 
@@ -81,10 +82,29 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = []
 
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['user', 'fullname', 'speciality', 'kyc_verified', 'email_verified', 'photo_preview']
+    readonly_fields = ['photo_preview', 'citizenship_front_preview', 'citizenship_back_preview']
+
+    def photo_preview(self, obj):
+        if obj.profile_photo:
+            return format_html('<img src="{}" width="50" height="50" style="border-radius:50%;object-fit:cover"/>', obj.profile_photo.url)
+        return "No photo"
+
+    def citizenship_front_preview(self, obj):
+        if obj.citizenship_front:
+            return format_html('<img src="{}" width="200"/>', obj.citizenship_front.url)
+        return "Not uploaded"
+
+    def citizenship_back_preview(self, obj):
+        if obj.citizenship_back:
+            return format_html('<img src="{}" width="200"/>', obj.citizenship_back.url)
+        return "Not uploaded"
+
+admin.site.register(profile, ProfileAdmin)
+
 # Now register the new UserAdmin...
 admin.site.register(MyUser, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
-
-admin.site.register(profile)
